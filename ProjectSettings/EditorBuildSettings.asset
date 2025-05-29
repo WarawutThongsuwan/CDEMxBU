@@ -13,10 +13,10 @@ EditorBuildSettings:
     guid: 964fbe7d43276d34588e45cab8064a1c
   - enabled: 1
     path: Assets/Scenes/stage3.unity
-    guid: db20e6930ffd1834c8625e9ac9d9cdf6
+    guid: 3306ed0eb998a2c4284946a39ca8dacf
   - enabled: 1
     path: Assets/Scenes/stage4.unity
-    guid: 3306ed0eb998a2c4284946a39ca8dacf
+    guid: db20e6930ffd1834c8625e9ac9d9cdf6
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: ea7ffa051c087894fa5a811d0670f445, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 800acb557a12af948aab42ab4ea68d8f, type: 2}

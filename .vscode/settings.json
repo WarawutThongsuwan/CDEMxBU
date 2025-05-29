@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TestVR_20250520_1A.sln"
+    "dotnet.defaultSolution": "CDEMxBU.sln"
 }
