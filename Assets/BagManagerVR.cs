@@ -72,7 +72,8 @@ public class BagManagerVR : MonoBehaviour
             }
         }
 
-        ScoreManager.Instance.AddScore(score);
+        ScoreManager.Instance.AddScoreAuto(10); // ไม่ต้องระบุชื่อด่านเอง
+
         Debug.Log("คะแนนรอบนี้: " + score);
 
         submitUI.SetActive(false);
