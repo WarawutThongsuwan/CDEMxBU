@@ -32,6 +32,12 @@ public class ScoreManager : MonoBehaviour
         currentMode = mode;
     }
 
+    public int GetScore()
+    {
+        string currentStage = SceneManager.GetActiveScene().name;
+        return GetStageScore(currentStage);
+    }
+
     public void AddScoreAuto(int amount)
     {
         string stage = SceneManager.GetActiveScene().name;
