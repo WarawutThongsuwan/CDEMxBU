@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
+
+    public string nextStage = "Stage1"; // ค่า default เผื่อกรณี fallback
 
     public enum GameMode { Story, FreePlay }
     public GameMode currentMode = GameMode.Story;
@@ -24,14 +27,17 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void SetMode(GameMode mode)
+    {
+        currentMode = mode;
+    }
+
     public void AddScoreAuto(int amount)
     {
-        string stage = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        string stage = SceneManager.GetActiveScene().name;
         AddScore(stage, amount);
     }
 
-
-    // เพิ่มคะแนน พร้อมระบุชื่อด่าน
     public void AddScore(string stageName, int amount)
     {
         if (!stageScores.ContainsKey(stageName))
@@ -54,10 +60,19 @@ public class ScoreManager : MonoBehaviour
         return stageScores.ContainsKey(stageName) ? stageScores[stageName] : 0;
     }
 
+    public int GetTotalScore()
+    {
+        return totalScore;
+    }
+
+    public void SetStageScore(string stageName, int score)
+    {
+        stageScores[stageName] = score;
+    }
+
     public void ResetAllScores()
     {
         totalScore = 0;
         stageScores.Clear();
     }
-
 }

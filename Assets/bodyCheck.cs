@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class bodyCheck : MonoBehaviour
+public class BodyCheck : MonoBehaviour
 {
     public GameObject uiObject; // UI ที่จะเปิด/ปิด
 
