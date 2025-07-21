@@ -1,17 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class StagePortal : MonoBehaviour
+public class StagePortalUI : MonoBehaviour
 {
-    private bool playerEntered = false;
+    public Button goToStage1Button;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Controller") && !playerEntered)
+        if (goToStage1Button != null)
         {
-            playerEntered = true;
-            string next = ScoreManager.Instance.nextStage;
-            SceneManager.LoadScene(next);
+            goToStage1Button.onClick.AddListener(LoadStage1);
         }
+        else
+        {
+            Debug.LogWarning("ยังไม่ได้ตั้งปุ่ม goToStage1Button ใน Inspector");
+        }
+    }
+
+    private void LoadStage1()
+    {
+        SceneManager.LoadScene("Stage1"); // หรือใช้ชื่อ Scene ที่ต้องการ
     }
 }

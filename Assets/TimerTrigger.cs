@@ -7,12 +7,14 @@ public class TimerTrigger : MonoBehaviour
     public float timeLimit = 10f;
     private float timer;
     private bool isTiming = false;
+    private bool hasTriggered = false;
 
-    public GameObject storyEndUI;        // UI ด่านถัดไป (Story Mode)
+    [Header("UI")]
+    public GameObject storyEndUI;        // UI ปุ่มด่านถัดไป (Story Mode)
     public GameObject freeEndUI;         // UI คะแนน + กลับเมนู (FreePlay Mode)
 
     public TextMeshProUGUI timerText;    // ตัวแสดงเวลา
-    public TextMeshProUGUI scoreText;    // ตัวแสดงคะแนน (ใน FreePlay เท่านั้น)
+    public TextMeshProUGUI finalScoreText; // ตัวแสดงคะแนน (เฉพาะ FreePlay)
 
     void Update()
     {
@@ -31,8 +33,9 @@ public class TimerTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
+            hasTriggered = true;     // ป้องกันเหยียบซ้ำ
             timer = timeLimit;
             isTiming = true;
         }
@@ -40,28 +43,37 @@ public class TimerTrigger : MonoBehaviour
 
     void TimeUp()
     {
+        // เช็คโหมดปัจจุบัน
         if (ScoreManager.Instance.currentMode == ScoreManager.GameMode.Story)
         {
             storyEndUI.SetActive(true); // เปิด UI เนื้อเรื่อง
         }
         else
         {
-            // แสดงคะแนนของด่านนี้
-            int score = ScoreManager.Instance.GetStageScore("Stage2"); // หรือชื่อด่านอื่น
+            string currentStage = SceneManager.GetActiveScene().name;
+            int score = ScoreManager.Instance.GetStageScore(currentStage);
 
-            scoreText.text = "คะแนน: " + score.ToString();
-
+            finalScoreText.text = "Score: " + score.ToString();
             freeEndUI.SetActive(true);  // เปิด UI FreePlay
         }
     }
 
-    // เรียกโดยปุ่มใน storyEndUI
+    public void ForceEnd()
+    {
+        if (isTiming)
+        {
+            timer = 0f;
+            isTiming = false;
+            TimeUp();
+        }
+    }
+
+    // เรียกจากปุ่มใน storyEndUI
     public void GoToNextStage()
     {
         string currentScene = SceneManager.GetActiveScene().name;
         string nextScene = "";
 
-        // กำหนดลำดับด่านต่อไปตามชื่อ
         switch (currentScene)
         {
             case "Stage1":
@@ -70,8 +82,11 @@ public class TimerTrigger : MonoBehaviour
             case "Stage2":
                 nextScene = "Stage3";
                 break;
+            case "Stage3":
+                nextScene = "EndScene"; // หรือกลับเมนู ฯลฯ
+                break;
             default:
-                Debug.LogWarning("ไม่รู้จักด่านถัดไปของ " + currentScene);
+                Debug.LogWarning("ไม่พบด่านถัดไปจาก: " + currentScene);
                 break;
         }
 
@@ -81,7 +96,7 @@ public class TimerTrigger : MonoBehaviour
         }
     }
 
-    // เรียกโดยปุ่มใน freeEndUI
+    // เรียกจากปุ่มใน freeEndUI
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("Menu");
