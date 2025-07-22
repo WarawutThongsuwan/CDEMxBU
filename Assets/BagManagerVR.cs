@@ -23,6 +23,13 @@ public class BagManagerVR : MonoBehaviour
         submitUI.SetActive(false);
         bagLidObject.SetActive(false);
 
+        // สมัคร event selectEntered / selectExited
+        foreach (var socket in sockets)
+        {
+            socket.selectEntered.AddListener(OnItemInserted);
+            socket.selectExited.AddListener(OnItemRemoved);
+        }
+
         if (submitButton != null)
             submitButton.onClick.AddListener(OnSubmitClicked);
     }
@@ -72,12 +79,30 @@ public class BagManagerVR : MonoBehaviour
             }
         }
 
-        ScoreManager.Instance.AddScoreAuto(10); // ไม่ต้องระบุชื่อด่านเอง
+        ScoreManager.Instance.AddScoreAuto(10);
 
         Debug.Log("คะแนนรอบนี้: " + score);
 
         submitUI.SetActive(false);
         if (bagLidObject != null)
             bagLidObject.SetActive(true);
+    }
+
+    void OnItemInserted(SelectEnterEventArgs args)
+    {
+        Collider col = args.interactableObject.transform.GetComponent<Collider>();
+        if (col != null && col is BoxCollider)
+        {
+            col.isTrigger = true;
+        }
+    }
+
+    void OnItemRemoved(SelectExitEventArgs args)
+    {
+        Collider col = args.interactableObject.transform.GetComponent<Collider>();
+        if (col != null && col is BoxCollider)
+        {
+            col.isTrigger = false;
+        }
     }
 }

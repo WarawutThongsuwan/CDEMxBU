@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TimerTrigger : MonoBehaviour
 {
@@ -10,11 +11,12 @@ public class TimerTrigger : MonoBehaviour
     private bool hasTriggered = false;
 
     [Header("UI")]
-    public GameObject storyEndUI;        // UI ปุ่มด่านถัดไป (Story Mode)
-    public GameObject freeEndUI;         // UI คะแนน + กลับเมนู (FreePlay Mode)
+    public GameObject storyEndUI;         // UI ปุ่มด่านถัดไป (Story Mode)
+    public GameObject freeEndUI;          // UI คะแนน + กลับเมนู (FreePlay Mode)
+    public GameObject forceEndButtonObj;  // 🔴 ปุ่ม ForceEnd
 
-    public TextMeshProUGUI timerText;    // ตัวแสดงเวลา
-    public TextMeshProUGUI finalScoreText; // ตัวแสดงคะแนน (เฉพาะ FreePlay)
+    public TextMeshProUGUI timerText;         // ตัวแสดงเวลา
+    public TextMeshProUGUI finalScoreText;    // ตัวแสดงคะแนน (เฉพาะ FreePlay)
 
     void Update()
     {
@@ -35,14 +37,22 @@ public class TimerTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasTriggered)
         {
-            hasTriggered = true;     // ป้องกันเหยียบซ้ำ
+            hasTriggered = true;
             timer = timeLimit;
             isTiming = true;
+
+            // 🔴 แสดงปุ่ม ForceEnd ตอนเริ่มนับเวลา
+            if (forceEndButtonObj != null)
+                forceEndButtonObj.SetActive(true);
         }
     }
 
     void TimeUp()
     {
+        // 🔴 ซ่อนปุ่ม ForceEnd เมื่อหมดเวลา
+        if (forceEndButtonObj != null)
+            forceEndButtonObj.SetActive(false);
+
         // เช็คโหมดปัจจุบัน
         if (ScoreManager.Instance.currentMode == ScoreManager.GameMode.Story)
         {
@@ -58,6 +68,7 @@ public class TimerTrigger : MonoBehaviour
         }
     }
 
+    // เรียกจากปุ่มในเกมตอนเล่น
     public void ForceEnd()
     {
         if (isTiming)
@@ -83,7 +94,7 @@ public class TimerTrigger : MonoBehaviour
                 nextScene = "Stage3";
                 break;
             case "Stage3":
-                nextScene = "EndScene"; // หรือกลับเมนู ฯลฯ
+                nextScene = "EndScene"; // หรือกลับเมนู
                 break;
             default:
                 Debug.LogWarning("ไม่พบด่านถัดไปจาก: " + currentScene);

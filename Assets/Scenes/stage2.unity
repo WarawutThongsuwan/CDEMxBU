@@ -6865,6 +6865,7 @@ MonoBehaviour:
   timeLimit: 60
   storyEndUI: {fileID: 247633594}
   freeEndUI: {fileID: 630613436}
+  forceEndButtonObj: {fileID: 2105772609}
   timerText: {fileID: 18989212}
   finalScoreText: {fileID: 1532710355}
 --- !u!136 &388847989
@@ -8293,7 +8294,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 1.384, y: 0.019999964, z: -0.068}
-  m_LocalScale: {x: 1.0909004, y: 0.92162865, z: -0.000043726002}
+  m_LocalScale: {x: 1.0909004, y: 0.92162865, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -10350,8 +10351,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.5748765, y: 1.0823783, z: 1.0726619}
+  m_Center: {x: -0.111622654, y: 0.04118907, z: 0.036330875}
 --- !u!114 &514727717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10761,7 +10762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3127728407712097239, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_SlopeLimit
-      value: 0
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166571520946076819, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_TagString
+      value: Controller
       objectReference: {fileID: 0}
     - target: {fileID: 3415145736139425353, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_IsActive
@@ -11245,7 +11250,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.427, z: -0.05}
-  m_LocalScale: {x: 1.932574, y: 0.8916573, z: -0.000043726002}
+  m_LocalScale: {x: 1.932574, y: 0.8916573, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -11350,7 +11355,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.02, z: 0.388}
-  m_LocalScale: {x: 1.932574, y: 0.92162865, z: -0.000043726002}
+  m_LocalScale: {x: 1.932574, y: 0.92162865, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -25626,7 +25631,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -26855,7 +26860,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -1.413, y: 0.019999964, z: -0.039}
-  m_LocalScale: {x: 1.1752828, y: 0.92162865, z: -0.000043726002}
+  m_LocalScale: {x: 1.1752828, y: 0.92162865, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -34223,7 +34228,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.045, y: 0.019999964, z: -0.444}
-  m_LocalScale: {x: 3.6270342, y: 0.92162865, z: -0.000043726002}
+  m_LocalScale: {x: 3.6270342, y: 0.92162865, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -37389,7 +37394,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.02, z: -0.399}
-  m_LocalScale: {x: 1.932574, y: 0.92162865, z: -0.000043726002}
+  m_LocalScale: {x: 1.932574, y: 0.92162865, z: 0.000043726}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 514727709}
@@ -42455,7 +42460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2105772610
 RectTransform:
   m_ObjectHideFlags: 0
