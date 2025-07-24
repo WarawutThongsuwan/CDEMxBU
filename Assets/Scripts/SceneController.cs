@@ -24,6 +24,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("stage4");  // ใช้ UnityEngine.SceneManagement.SceneManager
     }
 
+    public void StateMenu()
+    {
+        SceneManager.LoadScene("Menu");  // ใช้ UnityEngine.SceneManagement.SceneManager
+    }
+
     // ออกจากเกม
     public void QuitGame()
     {
