@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3038893807396108543}
   m_Layer: 0
   m_Name: RedCard (4)
-  m_TagString: Untagged
+  m_TagString: TriageTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0.27000046, y: 0.04909998, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.15, z: 0.003}
+  m_LocalScale: {x: 0.05, y: 0.07, z: 0.003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8709324506006474458}
@@ -332,3 +332,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToRespawn: {fileID: 5335844349213419044}
+  respawnCooldown: 1
