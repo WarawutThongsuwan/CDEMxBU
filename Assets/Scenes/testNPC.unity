@@ -1835,7 +1835,6 @@ Transform:
   - {fileID: 917489975}
   - {fileID: 974777366}
   - {fileID: 2089596019}
-  - {fileID: 2121613793}
   - {fileID: 1719490809}
   - {fileID: 1718879459}
   - {fileID: 691366366}
@@ -1847,7 +1846,6 @@ Transform:
   - {fileID: 1084082661}
   - {fileID: 2059773886}
   - {fileID: 555047279}
-  - {fileID: 1300122477}
   - {fileID: 1316918147}
   - {fileID: 1073963281}
   - {fileID: 2082604194}
@@ -17806,7 +17804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 97569396}
-  areaSize: 10
+  areaSize: 30
   minDistance: 1
 --- !u!114 &1287292229
 MonoBehaviour:
@@ -17830,7 +17828,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1300122477}
+  - component: {fileID: 1300122480}
   - component: {fileID: 1300122478}
   - component: {fileID: 1300122479}
   m_Layer: 0
@@ -17840,21 +17838,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1300122477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300122476}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 97569396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1300122478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17884,6 +17867,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patientsPrefab: {fileID: 1070906144192670727, guid: f8ef1985245c4004f9102211549bfac5, type: 3}
   isSpwan: 0
+--- !u!4 &1300122480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300122476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316918146
 GameObject:
   m_ObjectHideFlags: 0
@@ -25670,8 +25668,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121613793}
-  - component: {fileID: 2121613794}
-  - component: {fileID: 2121613795}
   m_Layer: 0
   m_Name: green5
   m_TagString: Untagged
@@ -25687,42 +25683,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121613792}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 97569396}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2121613794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121613792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724ba55a5447f3f4dae64868cbae46a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 97569396}
-  areaSize: 10
-  minDistance: 1
---- !u!114 &2121613795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121613792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d9eb25dc9398784da84f5b84900a3fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patientsPrefab: {fileID: 5736055788121589542, guid: e6656cf4be775cc4cb9f7e07194a6c4f, type: 3}
-  isSpwan: 0
 --- !u!1 &2139611056
 GameObject:
   m_ObjectHideFlags: 0
@@ -26391,6 +26358,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1300122480}
+  - {fileID: 2121613793}
   - {fileID: 354836942}
   - {fileID: 589532066}
   - {fileID: 291838909}
