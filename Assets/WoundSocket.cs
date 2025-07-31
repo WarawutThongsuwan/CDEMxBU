@@ -22,6 +22,7 @@ public class WoundSocket : XRSocketInteractor
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
+        Debug.Log("เปะ Tag");
 
         if (bleedingTarget != null)
         {

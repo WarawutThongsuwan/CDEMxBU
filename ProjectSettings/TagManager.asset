@@ -8,6 +8,9 @@ TagManager:
   - WoundPoint
   - Tourniquet
   - TriageTag
+  - Red
+  - Yellow
+  - Green
   layers:
   - Default
   - TransparentFX

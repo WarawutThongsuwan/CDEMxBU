@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene("stage1");  // ใช้ UnityEngine.SceneManagement.SceneManager
+        SceneManager.LoadScene("Stage1");  // ใช้ UnityEngine.SceneManagement.SceneManager
     }
 
     public void Stage3()
