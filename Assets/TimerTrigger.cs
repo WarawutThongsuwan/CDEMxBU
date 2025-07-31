@@ -18,6 +18,8 @@ public class TimerTrigger : MonoBehaviour
     public TextMeshProUGUI timerText;         // ตัวแสดงเวลา
     public TextMeshProUGUI finalScoreText;    // ตัวแสดงคะแนน (เฉพาะ FreePlay)
 
+    public GameObject objectToDisable;
+
     void Update()
     {
         if (isTiming)
@@ -44,6 +46,10 @@ public class TimerTrigger : MonoBehaviour
             // 🔴 แสดงปุ่ม ForceEnd ตอนเริ่มนับเวลา
             if (forceEndButtonObj != null)
                 forceEndButtonObj.SetActive(true);
+
+            // 🔴 ปิด GameObject ที่ระบุไว้
+            if (objectToDisable != null)
+                objectToDisable.SetActive(false);
         }
     }
 
