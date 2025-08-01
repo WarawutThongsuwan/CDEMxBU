@@ -35428,7 +35428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 532479837}
-  yOffset: -0.8
+  yOffset: -0.5
   followSpeed: 10
 --- !u!1 &1603628072
 GameObject:

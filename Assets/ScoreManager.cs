@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     public int totalScore = 0;
     public Dictionary<string, int> stageScores = new Dictionary<string, int>();
 
+
     private void Awake()
     {
         if (Instance == null)

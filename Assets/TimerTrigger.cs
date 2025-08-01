@@ -97,6 +97,9 @@ public class TimerTrigger : MonoBehaviour
                 nextScene = "Stage2";
                 break;
             case "Stage2":
+                nextScene = "ZoneSelect";
+                break;
+            case "ZoneSelect":
                 nextScene = "Stage3";
                 break;
             case "Stage3":
