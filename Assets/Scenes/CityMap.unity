@@ -24409,6 +24409,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2027bfff3d03419784c6866557a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triageUiZone: {fileID: 0}
+  treatmentUiZone: {fileID: 0}
+  parkingUiZone: {fileID: 0}
+  loadingUiZone: {fileID: 0}
+  triageZone: 0
+  treatmentZone: 0
+  parkingZone: 0
+  loadingZone: 0
+  button: 0
 --- !u!4 &1345820302
 Transform:
   m_ObjectHideFlags: 0
@@ -31183,8 +31192,8 @@ Transform:
   m_GameObject: {fileID: 1853438854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 20.934, y: 0.233, z: 6.516}
-  m_LocalScale: {x: 0.49477392, y: 0.66033065, z: 0.724743}
+  m_LocalPosition: {x: 20.925, y: 0.233, z: 6.516}
+  m_LocalScale: {x: 0.49477392, y: 0.66033065, z: 0.743224}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

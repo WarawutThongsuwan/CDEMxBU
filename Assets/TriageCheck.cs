@@ -12,10 +12,7 @@ public class TriageCheck : MonoBehaviour
         {
             Debug.Log("แปะแล้ว");
 
-            if (stretcher != null)
-            {
-                stretcher.SetTarget(transform.position);
-            }
+           
         }
     }
 }
