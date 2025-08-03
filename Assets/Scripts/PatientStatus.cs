@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class PatientStatus : MonoBehaviour
 {
     [Header("Status")]
@@ -26,17 +27,19 @@ public class PatientStatus : MonoBehaviour
                 break;
 
             case 6:
-                if (assignedStretcher == null)
+                // ถ้ายังไม่มีเปล assigned หรือเปลนั้นกำลังยุ่ง
+                if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
                 {
                     assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
 
                     if (assignedStretcher != null)
                     {
                         assignedStretcher.SetTarget(transform, this);
+                        Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
                     }
                     else
                     {
-                        Debug.LogWarning("ไม่มีเปลว่างในตอนนี้");
+                        Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
                     }
                 }
                 break;
@@ -46,6 +49,7 @@ public class PatientStatus : MonoBehaviour
                 break;
         }
     }
+
 
     void TimeCount()
     {
@@ -77,3 +81,4 @@ public class PatientStatus : MonoBehaviour
         }
     }
 }
+

@@ -7,6 +7,11 @@ public class StretcherManager : MonoBehaviour
 
     public List<StretcherController> stretchers = new List<StretcherController>();
 
+    private void Start()
+    {
+        
+    }
+
     private void Awake()
     {
         if (Instance == null)

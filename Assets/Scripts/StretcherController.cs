@@ -93,24 +93,28 @@ public class StretcherController : MonoBehaviour
         currentState = State.ToZone;
     }
 
-
-
     void DropPatient()
     {
         if (patientToPickUp != null)
         {
             Debug.Log($"{patientToPickUp.name} ถูกวางในโซนแล้ว");
 
-            // ปล่อยผู้ป่วยลงจากเปล
             patientToPickUp.SetParent(null);
-            patientToPickUp.position = targetPosition; // เอาไปวางตำแหน่ง zone พอดี
+            patientToPickUp.position = targetPosition;
 
-            // เคลียร์
+             // เปลี่ยน status = 10
+            PatientStatus status = patientToPickUp.GetComponent<PatientStatus>();
+            if (status != null)
+            {
+                status.status = 10;
+                Debug.Log($"{patientToPickUp.name} เปลี่ยนเป็นสถานะ 10 แล้ว");
+            }
+
             patientToPickUp = null;
         }
 
-        // จบการเคลื่อนไหว
         moving = false;
         currentState = State.Idle;
+
     }
 }
