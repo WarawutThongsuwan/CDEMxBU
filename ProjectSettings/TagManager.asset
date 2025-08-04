@@ -11,6 +11,7 @@ TagManager:
   - Red
   - Yellow
   - Green
+  - GauzeTag
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,9 @@ public class PatientStatus : MonoBehaviour
     public Transform greenZone; // กำหนดจาก Inspector
     public float walkSpeed = 1.5f;
 
+    private float stretcherCheckCooldown = 2f; // เช็คทุก 2 วิ
+    private float lastCheckTime = 0f;
+
     public Animator animator; // 1=เดิน, 2=นั่ง, , 3=ลุกขึ้น ,7=ตาย,
 
     void Update()
@@ -33,27 +36,40 @@ public class PatientStatus : MonoBehaviour
                 break;
 
             case 2:
-                if (triageColor == 1 && greenZone != null)
+                if (triageColor == 1)
                 {
+                    if (greenZone == null)
+                    {
+                        greenZone = TriageZoneManager.Instance.GetNearestActiveGreenZone(transform.position);
+                        if (greenZone == null)
+                        {
+                            Debug.LogWarning($"{gameObject.name} ยังไม่มี GreenZone ที่เปิดใช้งานให้เดินไป");
+                            return;
+                        }
+                    }
+                
                     MoveToGreenZone();
-                    
                 }
                 break;
 
             case 6:
-                // ถ้ายังไม่มีเปล assigned หรือเปลนั้นกำลังยุ่ง
-                if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                if (Time.time - lastCheckTime >= stretcherCheckCooldown)
                 {
-                    assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+                    lastCheckTime = Time.time;
 
-                    if (assignedStretcher != null)
+                    if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
                     {
-                        assignedStretcher.SetTarget(transform, this);
-                        Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                        assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                        if (assignedStretcher != null)
+                        {
+                            assignedStretcher.SetTarget(transform, this);
+                            Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                        }
                     }
                 }
                 break;

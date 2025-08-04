@@ -68,27 +68,35 @@ public class StretcherController : MonoBehaviour
     void AttachPatient()
     {
         if (patientToPickUp == null) return;
-
+    
         patientToPickUp.SetParent(sleepPoint);
         patientToPickUp.localPosition = Vector3.zero;
         Debug.Log($"{patientToPickUp.name} ขึ้นเปลแล้ว");
-
+    
+        TriageZoneController activeZone = TriageZoneManager.Instance.GetActiveZone();
+    
+        if (activeZone == null)
+        {
+            Debug.LogWarning("ยังไม่มี TriageZone ที่เปิดใช้งาน");
+            return;
+        }
+    
         switch (patientStatus.triageColor)
         {
-            case 3:
-                targetPosition = redZone.position;
+            case 3: // Red
+                targetPosition = activeZone.redPoint.position;
                 break;
-            case 2:
-                targetPosition = yellowZone.position;
+            case 2: // Yellow
+                targetPosition = activeZone.yellowPoint.position;
                 break;
-            case 1:
-                targetPosition = greenZone.position;
+            case 1: // Green
+                targetPosition = activeZone.greenPoint.position;
                 break;
             default:
                 Debug.LogWarning("ไม่รู้ว่าจะพาไปโซนไหน");
                 return;
         }
-
+    
         moving = true;
         currentState = State.ToZone;
     }
