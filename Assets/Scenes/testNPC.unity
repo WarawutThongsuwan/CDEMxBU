@@ -2505,7 +2505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
       propertyPath: m_Name
-      value: Emergency_Stretcher_0619064130_texture
+      value: Stretcher5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2513,7 +2517,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 813376506}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450063789}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450063788}
   m_SourcePrefab: {fileID: 100100000, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
 --- !u!4 &137149489 stripped
 Transform:
@@ -3797,9 +3807,11 @@ MonoBehaviour:
   status: 6
   triageColor: 3
   bloodEffect: {fileID: 261791566}
-  animator: {fileID: 261791567}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 261791567}
 --- !u!1001 &265861831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5392,7 +5404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6d00b2ebe32037747bc79df7bff77be3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7347,9 +7359,11 @@ MonoBehaviour:
   status: 6
   triageColor: 2
   bloodEffect: {fileID: 0}
-  animator: {fileID: 639043994}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 639043994}
 --- !u!95 &639043994 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3662524281925705559, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
@@ -7833,7 +7847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.94119
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7841,7 +7855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -26.59
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8682,12 +8696,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef00e1f27d57db489cba8b8cfb8a43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 6
-  triageColor: 2
+  status: 2
+  triageColor: 1
   bloodEffect: {fileID: 0}
-  animator: {fileID: 745071709}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 1411128867}
+  walkSpeed: 0.5
+  animator: {fileID: 745071709}
 --- !u!95 &745071709 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3662524281925705559, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
@@ -13576,6 +13592,112 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759455224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759455228}
+  - component: {fileID: 759455227}
+  - component: {fileID: 759455226}
+  - component: {fileID: 759455225}
+  m_Layer: 0
+  m_Name: SalineTag (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &759455225
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759455224}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &759455226
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759455224}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1018a806c5ef02a4bb3cfd37e064eb36, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &759455227
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759455224}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &759455228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759455224}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.08, y: 0, z: 8.77}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &770509667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8958108302224319723, guid: 686ff1f41a289ca4eaae9d8dcd5ea9a5, type: 3}
@@ -13982,13 +14104,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813376505}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.101, y: -0.018, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.101, y: -0.015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 137149489}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &816417310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5092236038528804095, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
@@ -14094,7 +14216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6d00b2ebe32037747bc79df7bff77be3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15565,9 +15687,11 @@ MonoBehaviour:
   status: 6
   triageColor: 3
   bloodEffect: {fileID: 607454317}
-  animator: {fileID: 965448235}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 965448235}
 --- !u!95 &965448235 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7898587636571754311, guid: 5a83c627e97546c44a6149cb119c7f35, type: 3}
@@ -19120,6 +19244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1629153456}
+  - {fileID: 1532433276}
   - {fileID: 682018235}
   - {fileID: 1798687472}
   - {fileID: 1331389343}
@@ -20303,7 +20428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.096943
+      value: -34.22
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20311,23 +20436,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20335,7 +20460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -21705,6 +21830,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011662072902, guid: d451d48adcbc4e14d817d2f55e6fe807, type: 3}
   m_PrefabInstance: {fileID: 1443459483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450063787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 06a409bf87459934a98305d3526dc47c, type: 3}
+  m_PrefabInstance: {fileID: 137149488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1450063788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450063787}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4eed62b0cb21d34b8b5a418601996ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  sleepPoint: {fileID: 813376506}
+  redZone: {fileID: 1037470022}
+  yellowZone: {fileID: 1252974321}
+  greenZone: {fileID: 1411128867}
+--- !u!65 &1450063789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450063787}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1452309970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22439,9 +22607,11 @@ MonoBehaviour:
   status: 6
   triageColor: 2
   bloodEffect: {fileID: 0}
-  animator: {fileID: 1459336088}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 1459336088}
 --- !u!1001 &1460189305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23547,6 +23717,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 872872978}
   m_SourcePrefab: {fileID: 100100000, guid: aa821daf0c0a9ae44a44c3e6f78c57e0, type: 3}
+--- !u!4 &1532433276 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+  m_PrefabInstance: {fileID: 1940791691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1547860048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23746,7 +23921,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6d00b2ebe32037747bc79df7bff77be3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24467,7 +24642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24475,7 +24650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27020,7 +27195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.428242
+      value: -24.54
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27028,7 +27203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -26.28
       objectReference: {fileID: 0}
     - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27380,9 +27555,11 @@ MonoBehaviour:
   status: 6
   triageColor: 2
   bloodEffect: {fileID: 0}
-  animator: {fileID: 1845679529}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 1845679529}
 --- !u!95 &1845679529 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3662524281925705559, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
@@ -27399,7 +27576,7 @@ PrefabInstance:
     - target: {fileID: 3662524281925705559, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: eacff8afabdc2844b9f6cb788ee2ad54, type: 2}
+      objectReference: {fileID: 9100000, guid: 70aa1b4640e9976449bd7fc24f88333c, type: 2}
     - target: {fileID: 7220337525402977581, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.83
@@ -27593,9 +27770,11 @@ MonoBehaviour:
   status: 6
   triageColor: 3
   bloodEffect: {fileID: 1961241677}
-  animator: {fileID: 1888612814}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 1888612814}
 --- !u!95 &1888612814 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7898587636571754311, guid: 5a83c627e97546c44a6149cb119c7f35, type: 3}
@@ -27808,14 +27987,85 @@ MonoBehaviour:
   status: 6
   triageColor: 3
   bloodEffect: {fileID: 582689532}
-  animator: {fileID: 1940525915}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 1940525915}
 --- !u!95 &1940525915 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7898587636571754311, guid: 5a83c627e97546c44a6149cb119c7f35, type: 3}
   m_PrefabInstance: {fileID: 994365363}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1940791691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1157480271}
+    m_Modifications:
+    - target: {fileID: 1000013138837536, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_Name
+      value: Hangar_v3_outbuilding_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5137978
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5137984
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5137978
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013809632866, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddd81253dc6e4d2478873aeebdbcb4cf, type: 3}
 --- !u!1 &1943329467
 GameObject:
   m_ObjectHideFlags: 0
@@ -28035,9 +28285,11 @@ MonoBehaviour:
   status: 6
   triageColor: 3
   bloodEffect: {fileID: 2017542791}
-  animator: {fileID: 1967261886}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 1967261886}
 --- !u!95 &1967261886 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7898587636571754311, guid: 5a83c627e97546c44a6149cb119c7f35, type: 3}
@@ -29608,9 +29860,11 @@ MonoBehaviour:
   status: 6
   triageColor: 2
   bloodEffect: {fileID: 0}
-  animator: {fileID: 2107553761}
   assignedStretcher: {fileID: 0}
   timeCountdown: 0
+  greenZone: {fileID: 0}
+  walkSpeed: 1.5
+  animator: {fileID: 2107553761}
 --- !u!95 &2107553761 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3662524281925705559, guid: f7830baaebfe11c46a48f1533e1f1708, type: 3}
@@ -30288,6 +30542,7 @@ SceneRoots:
   - {fileID: 162534117}
   - {fileID: 1747995038}
   - {fileID: 1672583372}
+  - {fileID: 759455228}
   - {fileID: 1101565060}
   - {fileID: 1157480271}
   - {fileID: 184429605}
