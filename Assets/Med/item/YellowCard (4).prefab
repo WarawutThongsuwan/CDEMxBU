@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 8101966402413674581}
   - component: {fileID: 6443761250439998217}
   - component: {fileID: 8267237715444617228}
-  - component: {fileID: -3988367082536013401}
   m_Layer: 0
   m_Name: YellowCard (4)
-  m_TagString: TriageTag
+  m_TagString: TriageYellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,19 +302,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToRespawn: {fileID: 3549386673558819404}
   respawnCooldown: 1
---- !u!114 &-3988367082536013401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3549386673558819404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731fc7e751180ba4d815ca386c4911c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signType: 1
 --- !u!1 &4120643081749183555
 GameObject:
   m_ObjectHideFlags: 0

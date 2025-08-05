@@ -1,38 +1,52 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class TriageSocket : XRSocketInteractor
 {
     [Header("Patient Reference")]
-    public PatientStatus targetPatient;        // คนไข้ที่จะเปลี่ยนค่า
+    public PatientStatus targetPatient;
 
-    [Header("Allowed Tag")]
-    public string allowedTag = "TriageTag";    // แท็กที่อนุญาตให้เสียบ
+    [Header("Allowed Tags")]
+    public List<string> allowedTags = new List<string> { "TriageGreen", "TriageYellow", "TriageRed", "TriageBlack" };
 
-    // เช็คว่าของที่จะเสียบตรง Tag ที่กำหนดไหม
     public override bool CanSelect(IXRSelectInteractable interactable)
     {
         var mono = interactable.transform.GetComponent<MonoBehaviour>();
-        if (mono != null && mono.CompareTag(allowedTag))
+        if (mono != null && allowedTags.Contains(mono.tag))
         {
             return base.CanSelect(interactable);
         }
         return false;
     }
 
-    // เมื่อเสียบวัตถุเข้าซ็อกเก็ต
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
 
         if (targetPatient != null)
         {
-            targetPatient.triageColor = 1;  // เปลี่ยนสีเป็นเขียว
-            Debug.Log($"{targetPatient.name} ถูกติด TriageTag → triageColor = 1");
+            string tag = args.interactableObject.transform.tag;
+            int colorCode = GetColorCodeFromTag(tag);
+
+            targetPatient.triageColor = colorCode;
+            Debug.Log($"{targetPatient.name} ถูกติด {tag} → triageColor = {colorCode}");
         }
         else
         {
             Debug.LogWarning("ยังไม่ได้เชื่อม targetPatient ใน Inspector");
+        }
+    }
+
+    private int GetColorCodeFromTag(string tag)
+    {
+        switch (tag)
+        {
+            case "TriageGreen": return 1;
+            case "TriageYellow": return 2;
+            case "TriageRed": return 3;
+            case "TriageBlack": return 4;
+            default: return 0;
         }
     }
 }

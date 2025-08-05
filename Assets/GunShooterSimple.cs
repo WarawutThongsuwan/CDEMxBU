@@ -1,29 +1,69 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class GunShooterSimple : MonoBehaviour
 {
-    public AudioSource gunShotSound;
-    public ActionBasedController controller;
-    public float triggerThreshold = 0.1f;
+    [Header("Radius for calling patients")]
+    public float callRadius = 2f;
 
-    private bool wasPressed = false;
+    [Header("Test Call Button")]
+    public bool callPatients = false;
+
+    private bool hasCalledOnce = false;
 
     void Update()
     {
-        if (controller && controller.activateActionValue != null)
+        // กดจาก Inspector
+        if (callPatients)
         {
-            float triggerValue = controller.activateActionValue.action.ReadValue<float>();
+            callPatients = false;
+            CallNearbyPatients();
+        }
+        
+    }
 
-            if (triggerValue > triggerThreshold && !wasPressed && TKDetector.isDetect == true)
-            {
-                wasPressed = true;
-                gunShotSound.Play();
-            }
+    void CallNearbyPatients()
+    {
+        if (hasCalledOnce)
+        {
+            Debug.Log("เรียกไปแล้วครั้งนึง ไม่สามารถเรียกซ้ำได้");
+            return;
+        }
 
-            if (triggerValue < triggerThreshold)
+        hasCalledOnce = true;
+
+        PatientStatus[] patients = FindObjectsOfType<PatientStatus>();
+        int count = 0;
+        int totalToCall = 0;
+
+        foreach (PatientStatus p in patients)
+        {
+            if (p.status == 1)
+                totalToCall++;
+        }
+
+        if (totalToCall == 0)
+        {
+            Debug.Log("ไม่มีผู้ป่วยที่ status == 1 ให้เรียก");
+            return;
+        }
+
+        foreach (PatientStatus patient in patients)
+        {
+            if (patient.status == 1)
             {
-                wasPressed = false;
+                float angle = 360f / totalToCall * count;
+                Vector3 offset = new Vector3(
+                    Mathf.Cos(angle * Mathf.Deg2Rad),
+                    0f,
+                    Mathf.Sin(angle * Mathf.Deg2Rad)
+                ) * callRadius;
+
+                Vector3 targetPos = transform.position + offset;
+
+                patient.MoveToPosition(targetPos);
+
+                Debug.Log($"เรียก {patient.name} → เดินไปยัง {targetPos}");
+                count++;
             }
         }
     }

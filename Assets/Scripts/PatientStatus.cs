@@ -4,7 +4,7 @@ using UnityEngine;
 public class PatientStatus : MonoBehaviour
 {
     [Header("Status")]
-    [Tooltip("1: Walk | 2: Bleeding | 3: Carrying | 4: Injury | 5: Breathing | 6: Call Stretcher | 7: Dead")]
+    [Tooltip("1: CanWalk | 2: CannotWalk | 3: Breeding | 4: Dead | 5: NotBreathing | 6: Call Stretcher | 7: Dead")]
     public int status = 1; // เปลี่ยนได้จาก Inspector
 
     [Tooltip("1=Green, 2=Yellow, 3=Red, 4=Black")]
@@ -20,23 +20,19 @@ public class PatientStatus : MonoBehaviour
 
     [Header("Green Zone")]
     public Transform greenZone; // กำหนดจาก Inspector
-    public float walkSpeed = 1.5f;
+    public float walkSpeed = 0.5f;
 
     private float stretcherCheckCooldown = 2f; // เช็คทุก 2 วิ
     private float lastCheckTime = 0f;
 
-    public Animator animator; // 1=เดิน, 2=นั่ง, , 3=ลุกขึ้น ,7=ตาย,
+    public Animator animator; // 1=ยืน, 2=เดิน, 3=นอน , 4=ตาย, 5=ท่าเปิดทางเดินหายใจ
 
     void Update()
     {
         switch (status)
         {
-            case 1:
-                TimeCount();
-                break;
-
-            case 2:
-                if (triageColor == 1)
+            case 1://ถ้าเดินได้
+                if (triageColor == 1)//ถ้าแปะสีเขียว
                 {
                     if (greenZone == null)
                     {
@@ -47,30 +43,209 @@ public class PatientStatus : MonoBehaviour
                             return;
                         }
                     }
-                
+
                     MoveToGreenZone();
                 }
-                break;
-
-            case 6:
-                if (Time.time - lastCheckTime >= stretcherCheckCooldown)
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
                 {
-                    lastCheckTime = Time.time;
-
-                    if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                    animator.SetInteger("movement", 3);
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
                     {
-                        assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+                        lastCheckTime = Time.time;
 
-                        if (assignedStretcher != null)
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
                         {
-                            assignedStretcher.SetTarget(transform, this);
-                            Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
-                        }
-                        else
-                        {
-                            Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
                         }
                     }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะไม่ได้คะแนน
+                {
+                    animator.SetInteger("movement", 3);
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+                
+                break;
+
+            case 2://ถ้าเดินไม่ได้
+                animator.SetInteger("movement", 3);
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+                
+                break;
+
+            case 3://ถ้าเลือดออก
+                animator.SetInteger("movement", 3);
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+                
+                break;
+
+            case 4://ถ้าตายแล้ว
+                animator.SetInteger("movement", 4);
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+                if (triageColor == 4) //ถ้าป้ายมาแปะเป็นสีดำจะได้คะแนน
+                {
+                    
                 }
                 break;
 
@@ -89,15 +264,15 @@ public class PatientStatus : MonoBehaviour
         timeCountdown += Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("TriageTag") && status != 6)
-        {
-            Debug.Log($"{gameObject.name} ชนกับ TriageTag → เปลี่ยนเป็นสถานะ 6");
-            status = 6;
-            PlayerScore.score += 1;
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+        //if (other.CompareTag("TriageTag") && status != 6)
+        //{
+            //Debug.Log($"{gameObject.name} ชนกับ TriageTag → เปลี่ยนเป็นสถานะ 6");
+            //status = 6;
+            //PlayerScore.score += 1;
+        //}
+    //}
 
     void MoveToGreenZone()
     {
@@ -121,6 +296,39 @@ public class PatientStatus : MonoBehaviour
             animator.SetInteger("movement", 1);
             Debug.Log($"{gameObject.name} ถึงโซนสีเขียวแล้ว → status = 10");
         }
+    }
+
+    public void MoveToPosition(Vector3 position)
+    {
+        StopAllCoroutines();
+        StartCoroutine(MoveToTarget(position));
+    }
+
+    private System.Collections.IEnumerator MoveToTarget(Vector3 target)
+    {
+        Debug.Log($"Set animator movement to 2 for {gameObject.name}");
+        animator.SetInteger("movement", 2); // เดิน
+        
+
+        while (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(target.x, 0, target.z)) > 0.1f)
+        {
+            Vector3 currentPos = transform.position;
+            Vector3 targetPos = new Vector3(target.x, currentPos.y, target.z);
+
+            Vector3 dir = (targetPos - currentPos).normalized;
+
+            transform.position = Vector3.MoveTowards(currentPos, targetPos, walkSpeed * Time.deltaTime);
+
+            if (dir != Vector3.zero)
+            {
+                Quaternion lookRot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5f);
+            }
+
+            yield return null;
+        }
+
+        animator.SetInteger("movement", 1); // หยุดเดิน กลับเป็นยืน
     }
 
 
