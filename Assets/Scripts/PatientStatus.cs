@@ -4,7 +4,7 @@ using UnityEngine;
 public class PatientStatus : MonoBehaviour
 {
     [Header("Status")]
-    [Tooltip("1: CanWalk | 2: CannotWalk | 3: Breeding | 4: Dead | 5: NotBreathing | 6: Call Stretcher | 7: Dead")]
+    [Tooltip("1: CanWalk | 2: CannotWalk | 3: Breeding | 4: Dead | 5: NotBreathing | 6: yellow2 | 7: ")]
     public int status = 1; // เปลี่ยนได้จาก Inspector
 
     [Tooltip("1=Green, 2=Yellow, 3=Red, 4=Black")]
@@ -27,6 +27,9 @@ public class PatientStatus : MonoBehaviour
 
     public Animator animator; // 1=ยืน, 2=เดิน, 3=นอน , 4=ตาย, 5=ท่าเปิดทางเดินหายใจ
 
+    public GameObject objectYellow;
+    public GameObject objectNormal;
+
     void Update()
     {
         switch (status)
@@ -34,6 +37,7 @@ public class PatientStatus : MonoBehaviour
             case 1://ถ้าเดินได้
                 if (triageColor == 1)//ถ้าแปะสีเขียว
                 {
+                    
                     if (greenZone == null)
                     {
                         greenZone = TriageZoneManager.Instance.GetNearestActiveGreenZone(transform.position);
@@ -43,9 +47,10 @@ public class PatientStatus : MonoBehaviour
                             return;
                         }
                     }
-
+                    ScoreManager.Instance.AddScoreAuto(10);
                     MoveToGreenZone();
                 }
+
                 if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
                 {
                     animator.SetInteger("movement", 3);
@@ -93,13 +98,14 @@ public class PatientStatus : MonoBehaviour
                         }
                     }
                 }
-                
+
                 break;
 
             case 2://ถ้าเดินไม่ได้
                 animator.SetInteger("movement", 3);
                 if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะได้คะแนน
                 {
+                    
                     if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
                     {
                         lastCheckTime = Time.time;
@@ -110,6 +116,7 @@ public class PatientStatus : MonoBehaviour
 
                             if (assignedStretcher != null)
                             {
+                                ScoreManager.Instance.AddScoreAuto(10);
                                 assignedStretcher.SetTarget(transform, this);
                                 Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
                             }
@@ -143,11 +150,17 @@ public class PatientStatus : MonoBehaviour
                         }
                     }
                 }
-                
+                TimeCount();
+                if (timeCountdown >= 180)
+                {
+                    status = 5;
+                }
                 break;
 
             case 3://ถ้าเลือดออก
+                TimeCount();
                 animator.SetInteger("movement", 3);
+
                 if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
                 {
                     if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
@@ -173,6 +186,7 @@ public class PatientStatus : MonoBehaviour
 
                 if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะได้คะแนน
                 {
+                    
                     if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
                     {
                         lastCheckTime = Time.time;
@@ -183,6 +197,7 @@ public class PatientStatus : MonoBehaviour
 
                             if (assignedStretcher != null)
                             {
+                                ScoreManager.Instance.AddScoreAuto(10);
                                 assignedStretcher.SetTarget(transform, this);
                                 Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
                             }
@@ -193,10 +208,19 @@ public class PatientStatus : MonoBehaviour
                         }
                     }
                 }
-                
+                if (timeCountdown >= 115)
+                {
+                    animator.SetInteger("movement", 4);
+                    if (timeCountdown >= 120)
+                    {
+                        status = 4;
+                    }
+                }
                 break;
 
             case 4://ถ้าตายแล้ว
+                TimeCount();
+
                 animator.SetInteger("movement", 4);
                 if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
                 {
@@ -243,14 +267,138 @@ public class PatientStatus : MonoBehaviour
                         }
                     }
                 }
+
                 if (triageColor == 4) //ถ้าป้ายมาแปะเป็นสีดำจะได้คะแนน
                 {
-                    
+                    ScoreManager.Instance.AddScoreAuto(10);
                 }
+                BecomeBlack();
                 break;
 
+            case 5:
+                TimeCount();
+                if (objectYellow != null)
+                {
+                    objectYellow.SetActive(true);
+                }
+                if (objectNormal != null)
+                {
+                    objectNormal.SetActive(false);
+                }
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะได้คะแนน
+                {
+                    
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                ScoreManager.Instance.AddScoreAuto(10);
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+                if (timeCountdown >= 295)
+                {
+                    animator.SetInteger("movement", 4);
+                    if (timeCountdown >= 300)
+                    {
+                        status = 4;
+                    }
+                }
+                break;
+            case 6://ถ้าเดินไม่ได้ และไม่เจ็บมาก
+                animator.SetInteger("movement", 3);
+                if (triageColor == 2) //ถ้าป้ายมาแปะเป็นสีเหลืองจะได้คะแนน
+                {
+                    
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                ScoreManager.Instance.AddScoreAuto(10);
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                if (triageColor == 3) //ถ้าป้ายมาแปะเป็นสีแดงจะไม่ได้คะแนน
+                {
+                    if (Time.time - lastCheckTime >= stretcherCheckCooldown) //check stretcher
+                    {
+                        lastCheckTime = Time.time;
+
+                        if (assignedStretcher == null || assignedStretcher.IsBusy() == false)
+                        {
+                            assignedStretcher = StretcherManager.Instance.GetAvailableStretcher();
+
+                            if (assignedStretcher != null)
+                            {
+                                assignedStretcher.SetTarget(transform, this);
+                                Debug.Log($"{gameObject.name} เรียกเปลเรียบร้อยแล้ว");
+                            }
+                            else
+                            {
+                                Debug.LogWarning($"{gameObject.name} ยังไม่มีเปลว่าง");
+                            }
+                        }
+                    }
+                }
+
+                break;
             case 7:
-                BecomeBlack();
+                TimeCount();
+                animator.SetInteger("movement", 4);
+                if (timeCountdown >= 5)
+                {
+                    status = 4;
+                }
                 break;
         }
 
@@ -334,17 +482,13 @@ public class PatientStatus : MonoBehaviour
 
     void BecomeBlack()
     {
-        if (triageColor != 4) // ถ้ายังไม่เป็นดำ
-        {
-            Debug.Log($"{gameObject.name} ตาย (เป็นสีดำ)");
-            triageColor = 4;
+        if (animator != null)
+            animator.enabled = false;
 
-            if (animator != null)
-                animator.enabled = false;
-
-            if (bloodEffect != null)
-                bloodEffect.SetActive(false);
-        }
+        if (bloodEffect != null)
+            bloodEffect.SetActive(false);
+        
+        status = 10;
     }
 }
 

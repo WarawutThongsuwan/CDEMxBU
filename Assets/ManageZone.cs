@@ -12,7 +12,7 @@ public class ManageZone : MonoBehaviour
     public GameObject loading1, loading2, loading3, loading4, loading5, loading6;
 
     // Start is called before the first frame update
-    void Start()
+    public void ActivateZones()
     {
         switch (PlayerPrefs.GetInt("TrtriageZone"))
         {

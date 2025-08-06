@@ -16,6 +16,7 @@ TagManager:
   - TriageYellow
   - TriageBlack
   - TriageRed
+  - BandageTag
   layers:
   - Default
   - TransparentFX

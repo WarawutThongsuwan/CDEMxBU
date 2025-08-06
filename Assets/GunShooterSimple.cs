@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit;
 public class GunShooterSimple : MonoBehaviour
 {
     [Header("Radius for calling patients")]
@@ -9,6 +9,11 @@ public class GunShooterSimple : MonoBehaviour
     public bool callPatients = false;
 
     private bool hasCalledOnce = false;
+    public AudioSource gunShotSound;
+    public ActionBasedController controller;
+    public float triggerThreshold = 0.1f;
+
+    private bool wasPressed = false;
 
     void Update()
     {
@@ -17,6 +22,22 @@ public class GunShooterSimple : MonoBehaviour
         {
             callPatients = false;
             CallNearbyPatients();
+        }
+        if (controller && controller.activateActionValue != null)
+        {
+            float triggerValue = controller.activateActionValue.action.ReadValue<float>();
+
+            if (triggerValue > triggerThreshold && !wasPressed && TKDetector.isDetect == true)
+            {
+                wasPressed = true;
+                CallNearbyPatients();
+                gunShotSound.Play();
+            }
+
+            if (triggerValue < triggerThreshold)
+            {
+                wasPressed = false;
+            }
         }
         
     }

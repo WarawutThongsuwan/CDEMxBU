@@ -12,6 +12,8 @@ public class GauzeSocket : XRSocketInteractor
 
     [Header("Debug")]
     public bool testApplyMaterial = false; // ติ๊กแล้วจะเปลี่ยนวัสดุทันที
+    public GameObject objectToActivate;
+    public GameObject object2;
 
     public override bool CanSelect(IXRSelectInteractable interactable)
     {
@@ -34,8 +36,17 @@ public class GauzeSocket : XRSocketInteractor
     {
         if (targetRenderer != null && newMaterial != null)
         {
+            ScoreManager.Instance.AddScoreAuto(10);
             targetRenderer.material = newMaterial;
             Debug.Log("เปลี่ยน Material เรียบร้อยแล้ว");
+            if (objectToActivate != null)
+            {
+                objectToActivate.SetActive(true);
+            }
+            if (object2 != null)
+            {
+                object2.SetActive(true);
+            }
         }
         else
         {

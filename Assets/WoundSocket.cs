@@ -5,8 +5,8 @@ public class WoundSocket : XRSocketInteractor
 {
     public BleedingController bleedingTarget;
     public string allowedTag = "Tourniquet";
+    public GameObject objectToActivate; // ← ออปเจคที่จะเปิดเมื่อเลือดหยุด
 
-    // ใช้ API ใหม่: IXRSelectInteractable
     public override bool CanSelect(IXRSelectInteractable interactable)
     {
         var mono = interactable.transform.GetComponent<MonoBehaviour>();
@@ -18,7 +18,6 @@ public class WoundSocket : XRSocketInteractor
         return false;
     }
 
-    // ใช้ SelectEnterEventArgs ตาม API ใหม่
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
@@ -26,8 +25,14 @@ public class WoundSocket : XRSocketInteractor
 
         if (bleedingTarget != null)
         {
+            ScoreManager.Instance.AddScoreAuto(10);
             bleedingTarget.StopBleeding();
             Debug.Log("เลือดหยุดเมื่อสายรัดเสียบเข้ารูแผล");
+
+            if (objectToActivate != null)
+            {
+                objectToActivate.SetActive(true);
+            }
         }
     }
 }

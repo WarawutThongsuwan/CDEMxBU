@@ -10,6 +10,8 @@ public class TimerTrigger : MonoBehaviour
     private bool isTiming = false;
     private bool hasTriggered = false;
 
+    public ManageZone manageZone; // ← ลากมาจาก Inspector
+
     [Header("UI")]
     public GameObject storyEndUI;         // UI ปุ่มด่านถัดไป (Story Mode)
     public GameObject freeEndUI;          // UI คะแนน + กลับเมนู (FreePlay Mode)
@@ -41,6 +43,10 @@ public class TimerTrigger : MonoBehaviour
         {
             hasTriggered = true;
             timer = timeLimit;
+            if (manageZone != null)
+            {
+                manageZone.ActivateZones();
+            }
             isTiming = true;
 
             // 🔴 แสดงปุ่ม ForceEnd ตอนเริ่มนับเวลา
@@ -62,6 +68,16 @@ public class TimerTrigger : MonoBehaviour
         // เช็คโหมดปัจจุบัน
         if (ScoreManager.Instance.currentMode == ScoreManager.GameMode.Story)
         {
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            // ✅ ถ้าอยู่ใน Stage3 ให้แสดงคะแนนรวม
+            if (currentScene == "Stage3")
+            {
+                int total = ScoreManager.Instance.GetTotalScore();
+                finalScoreText.text = "คะแนนรวมของคุณคือ: " + total;
+                finalScoreText.gameObject.SetActive(true); // ให้แน่ใจว่า Text ถูกเปิดแสดง
+            }
+
             storyEndUI.SetActive(true); // เปิด UI เนื้อเรื่อง
         }
         else
@@ -70,9 +86,11 @@ public class TimerTrigger : MonoBehaviour
             int score = ScoreManager.Instance.GetStageScore(currentStage);
 
             finalScoreText.text = "Score: " + score.ToString();
+            finalScoreText.gameObject.SetActive(true);
             freeEndUI.SetActive(true);  // เปิด UI FreePlay
         }
     }
+
 
     // เรียกจากปุ่มในเกมตอนเล่น
     public void ForceEnd()
