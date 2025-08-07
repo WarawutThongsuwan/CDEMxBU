@@ -29,6 +29,7 @@ public class PatientStatus : MonoBehaviour
 
     public GameObject objectYellow;
     public GameObject objectNormal;
+    static public bool isScoreCounting;
 
     void Update()
     {
@@ -47,7 +48,7 @@ public class PatientStatus : MonoBehaviour
                             return;
                         }
                     }
-                    ScoreManager.Instance.AddScoreAuto(10);
+                    // isScoreCounting = true;
                     MoveToGreenZone();
                 }
 
@@ -424,6 +425,8 @@ public class PatientStatus : MonoBehaviour
 
     void MoveToGreenZone()
     {
+        //ScoreManager.Instance.AddScoreAuto(10);
+        //isScoreCounting = false;
         Vector3 direction = (greenZone.position - transform.position).normalized;
         animator.SetInteger("movement", 2);
 
@@ -440,9 +443,13 @@ public class PatientStatus : MonoBehaviour
         float distance = Vector3.Distance(transform.position, greenZone.position);
         if (distance < 0.1f)
         {
+
             status = 10;
+            ScoreManager.Instance.AddScoreAuto(10);
             animator.SetInteger("movement", 1);
             Debug.Log($"{gameObject.name} ถึงโซนสีเขียวแล้ว → status = 10");
+            
+            
         }
     }
 

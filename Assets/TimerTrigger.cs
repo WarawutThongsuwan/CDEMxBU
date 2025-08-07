@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerTrigger : MonoBehaviour
 {
     public float timeLimit = 10f;
-    private float timer;
+    static public float timer;
     private bool isTiming = false;
     private bool hasTriggered = false;
 
@@ -22,12 +22,47 @@ public class TimerTrigger : MonoBehaviour
 
     public GameObject objectToDisable;
 
+    public GameObject targetObject;      // Object A ที่ให้ Player ชน
+    public GameObject explosionObject;   // GameObject ระเบิดที่จะแสดง
+    private bool explosionTriggered = false;
+    private bool isPlayerInside = false;
+
+     public bool isSend = true;
+    
+
+
     void Update()
     {
         if (isTiming)
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F1");
+
+            // เงื่อนไขเวลาเหลือ <= 210 และยังไม่เรียกระเบิด
+            // if (timer <= 210f )
+            // {
+
+
+            //     if (explosionObject != null)
+            //     {
+            //         explosionObject.SetActive(true); // แสดงระเบิด
+            //     }
+
+            //     if (isPlayerInside)
+            //     {
+            //         isTiming = false;
+            //         TimeUp(); // จบเกมทันที
+            //     }
+            // }
+      
+            if (timer <= 200 && isSend == true)
+            {
+
+                ScoreManager.Instance.AddScoreAuto(10);
+                isSend = false;
+                Debug.Log("SendScore 10");
+            }
+
 
             if (timer <= 0)
             {
@@ -37,29 +72,30 @@ public class TimerTrigger : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !hasTriggered)
-        {
-            hasTriggered = true;
-            timer = timeLimit;
-            if (manageZone != null)
-            {
-                manageZone.ActivateZones();
-            }
-            isTiming = true;
 
-            // 🔴 แสดงปุ่ม ForceEnd ตอนเริ่มนับเวลา
-            if (forceEndButtonObj != null)
-                forceEndButtonObj.SetActive(true);
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("Player") && !hasTriggered)
+    //     {
+    //         hasTriggered = true;
+    //         timer = timeLimit;
+    //         if (manageZone != null)
+    //         {
+    //             manageZone.ActivateZones();
+    //         }
+    //         isTiming = true;
 
-            // 🔴 ปิด GameObject ที่ระบุไว้
-            if (objectToDisable != null)
-                objectToDisable.SetActive(false);
-        }
-    }
+    //         // 🔴 แสดงปุ่ม ForceEnd ตอนเริ่มนับเวลา
+    //         if (forceEndButtonObj != null)
+    //             forceEndButtonObj.SetActive(true);
 
-    void TimeUp()
+    //         // 🔴 ปิด GameObject ที่ระบุไว้
+    //         if (objectToDisable != null)
+    //             objectToDisable.SetActive(false);
+    //     }
+    // }
+
+    public void TimeUp()
     {
         // 🔴 ซ่อนปุ่ม ForceEnd เมื่อหมดเวลา
         if (forceEndButtonObj != null)
@@ -74,7 +110,7 @@ public class TimerTrigger : MonoBehaviour
             if (currentScene == "Stage3")
             {
                 int total = ScoreManager.Instance.GetTotalScore();
-                finalScoreText.text = "คะแนนรวมของคุณคือ: " + total;
+                finalScoreText.text = "Total Score : " + total;
                 finalScoreText.gameObject.SetActive(true); // ให้แน่ใจว่า Text ถูกเปิดแสดง
             }
 
@@ -88,6 +124,47 @@ public class TimerTrigger : MonoBehaviour
             finalScoreText.text = "Score: " + score.ToString();
             finalScoreText.gameObject.SetActive(true);
             freeEndUI.SetActive(true);  // เปิด UI FreePlay
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // ถ้ายังไม่เคยเริ่มนับเวลา
+            if (!hasTriggered)
+            {
+                hasTriggered = true;
+                timer = timeLimit;
+                if (manageZone != null)
+                {
+                    manageZone.ActivateZones();
+                }
+                isTiming = true;
+
+                // แสดงปุ่ม ForceEnd
+                if (forceEndButtonObj != null)
+                    forceEndButtonObj.SetActive(true);
+
+                // ปิด GameObject ที่ระบุไว้
+                if (objectToDisable != null)
+                    objectToDisable.SetActive(false);
+            }
+
+            // ตรวจสอบว่าชนกับ GameObject A หรือไม่
+            if (targetObject != null && other.gameObject == targetObject)
+            {
+                isPlayerInside = true;
+            }
+        }
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && other.gameObject == targetObject)
+        {
+            isPlayerInside = false;
         }
     }
 

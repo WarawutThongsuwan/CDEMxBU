@@ -6841,12 +6841,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 60
+  manageZone: {fileID: 0}
   storyEndUI: {fileID: 247633594}
   freeEndUI: {fileID: 630613436}
   forceEndButtonObj: {fileID: 2105772609}
   timerText: {fileID: 18989212}
   finalScoreText: {fileID: 1532710355}
   objectToDisable: {fileID: 387628441}
+  targetObject: {fileID: 0}
+  explosionObject: {fileID: 0}
 --- !u!136 &388847989
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -34788,7 +34791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9149f732de176794991b6f5c816b2ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 1179424425}
+  cameraTransform: {fileID: 532479837}
   yOffset: -0.5
   followSpeed: 5
 --- !u!1 &1603628072

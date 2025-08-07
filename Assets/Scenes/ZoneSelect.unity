@@ -10669,6 +10669,7 @@ GameObject:
   - component: {fileID: 590158636}
   - component: {fileID: 590158635}
   - component: {fileID: 590158634}
+  - component: {fileID: 590158637}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -10790,6 +10791,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590158632}
   m_CullTransparentMesh: 1
+--- !u!114 &590158637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590158632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15631b6db08214e978b8999bfb1f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToAdd: 10
+  stageNameOverride: 
 --- !u!1001 &591434305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25919,6 +25934,7 @@ GameObject:
   - component: {fileID: 1155344285}
   - component: {fileID: 1155344284}
   - component: {fileID: 1155344283}
+  - component: {fileID: 1155344286}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -26040,6 +26056,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155344281}
   m_CullTransparentMesh: 1
+--- !u!114 &1155344286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155344281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15631b6db08214e978b8999bfb1f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToAdd: 10
+  stageNameOverride: 
 --- !u!1 &1159838220
 GameObject:
   m_ObjectHideFlags: 0
@@ -27632,6 +27662,7 @@ GameObject:
   - component: {fileID: 1240543073}
   - component: {fileID: 1240543072}
   - component: {fileID: 1240543071}
+  - component: {fileID: 1240543074}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -27753,6 +27784,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240543069}
   m_CullTransparentMesh: 1
+--- !u!114 &1240543074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240543069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15631b6db08214e978b8999bfb1f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToAdd: 10
+  stageNameOverride: 
 --- !u!1001 &1247237867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31107,6 +31152,7 @@ GameObject:
   - component: {fileID: 1431109407}
   - component: {fileID: 1431109406}
   - component: {fileID: 1431109405}
+  - component: {fileID: 1431109408}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -31228,6 +31274,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431109403}
   m_CullTransparentMesh: 1
+--- !u!114 &1431109408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431109403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15631b6db08214e978b8999bfb1f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToAdd: 10
+  stageNameOverride: 
 --- !u!1001 &1432098627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36928,6 +36988,7 @@ GameObject:
   - component: {fileID: 1821154058}
   - component: {fileID: 1821154057}
   - component: {fileID: 1821154056}
+  - component: {fileID: 1821154059}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -37049,6 +37110,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821154054}
   m_CullTransparentMesh: 1
+--- !u!114 &1821154059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821154054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15631b6db08214e978b8999bfb1f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToAdd: 10
+  stageNameOverride: 
 --- !u!1 &1823020809
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,6 +59,8 @@ public class ScoreManager : MonoBehaviour
             totalScore += amount;
         }
 
+        PatientStatus.isScoreCounting = true;
+
         Debug.Log($"🎯 ได้คะแนน {amount} ที่ด่าน {stageName} (รวม: {totalScore})");
     }
 
