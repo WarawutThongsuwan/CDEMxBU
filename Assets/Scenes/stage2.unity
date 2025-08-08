@@ -6850,6 +6850,7 @@ MonoBehaviour:
   objectToDisable: {fileID: 387628441}
   targetObject: {fileID: 0}
   explosionObject: {fileID: 0}
+  isSend: 1
 --- !u!136 &388847989
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11724,13 +11725,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629829536}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.47, y: 0, z: -0}
+  m_LocalRotation: {x: -0, y: -0.40943512, z: -0, w: 0.91233927}
+  m_LocalPosition: {x: -1.27, y: 0, z: 0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1580830745}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -48.339, z: 0}
 --- !u!65 &629829538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32357,7 +32358,7 @@ Transform:
   m_GameObject: {fileID: 1476975809}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.11, y: 0, z: 0}
+  m_LocalPosition: {x: 1.11, y: 0, z: 0.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
