@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaitForExplode : MonoBehaviour
 {
     public GameObject explosion, gameOverTrigger;
-    public AudioClip warningVoice;
+    public AudioClip warningVoice, explodeVoice;
 
     public TimerTrigger timerTrigger; // ← ลากอ้างอิงใน Inspector (ตัวหลักในฉาก)
 
@@ -24,7 +24,9 @@ public class WaitForExplode : MonoBehaviour
     void SpawnExplode()
     {
         Instantiate(explosion, transform.position, transform.rotation);
+        GetComponent<AudioSource>().PlayOneShot(explodeVoice);
     }
+
 
     void SpawnGameOverTrigger()
     {

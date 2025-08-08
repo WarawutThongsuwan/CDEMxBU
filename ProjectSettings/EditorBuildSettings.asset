@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage1.unity
     guid: 146f41325eb2ffd4aa902e704c57a308
   - enabled: 1
-    path: Assets/Scenes/Stage2.unity
+    path: Assets/Scenes/Stage1.unity
     guid: 964fbe7d43276d34588e45cab8064a1c
   - enabled: 1
-    path: Assets/Scenes/Stage3.unity
+    path: Assets/Scenes/Stage2.unity
     guid: db20e6930ffd1834c8625e9ac9d9cdf6
   - enabled: 1
     path: Assets/Scenes/ZoneSelect.unity

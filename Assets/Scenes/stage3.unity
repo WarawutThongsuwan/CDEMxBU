@@ -9386,6 +9386,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!1001 &322651167
 PrefabInstance:
@@ -13377,6 +13378,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!1 &431193100
 GameObject:
@@ -19216,6 +19218,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!1 &663403855
 GameObject:
@@ -41876,6 +41879,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!4 &1288990822 stripped
 Transform:
@@ -61345,6 +61349,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!1001 &1962720661
 PrefabInstance:
@@ -64188,7 +64193,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -64288,6 +64293,7 @@ MonoBehaviour:
   explosion: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   gameOverTrigger: {fileID: 874603410577977807, guid: 4a13b34f954203247a8cbf2e3482937e, type: 3}
   warningVoice: {fileID: 8300000, guid: 4170b171525881e4fa2be654ee83e143, type: 3}
+  explodeVoice: {fileID: 8300000, guid: b3d54a1cc7984a444b7702886359fd28, type: 3}
   timerTrigger: {fileID: 1455821621}
 --- !u!1 &2080481118
 GameObject:
