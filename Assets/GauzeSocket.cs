@@ -36,7 +36,7 @@ public class GauzeSocket : XRSocketInteractor
     {
         if (targetRenderer != null && newMaterial != null)
         {
-            ScoreManager.Instance.AddScoreAuto(10);
+            // ScoreManager.Instance.AddScoreAuto(10);
             targetRenderer.material = newMaterial;
             Debug.Log("เปลี่ยน Material เรียบร้อยแล้ว");
             if (objectToActivate != null)

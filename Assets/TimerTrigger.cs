@@ -110,7 +110,7 @@ public class TimerTrigger : MonoBehaviour
             if (currentScene == "Stage3")
             {
                 int total = ScoreManager.Instance.GetTotalScore();
-                finalScoreText.text = "Total Score : " + total;
+                finalScoreText.text = "Total Score : " + total + " / 1280 ";
                 finalScoreText.gameObject.SetActive(true); // ให้แน่ใจว่า Text ถูกเปิดแสดง
             }
 

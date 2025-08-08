@@ -47098,7 +47098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ad0461b4763c04e8c6452b6442b5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 210
+  timeLimit: 300
   manageZone: {fileID: 1225211612}
   storyEndUI: {fileID: 1149651982}
   freeEndUI: {fileID: 415848819}
@@ -56493,7 +56493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1795364962
 Transform:
   m_ObjectHideFlags: 0

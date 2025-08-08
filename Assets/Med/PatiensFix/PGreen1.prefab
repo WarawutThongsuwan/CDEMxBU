@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef00e1f27d57db489cba8b8cfb8a43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 3
+  status: 1
   triageColor: 0
   bloodEffect: {fileID: 0}
   assignedStretcher: {fileID: 0}

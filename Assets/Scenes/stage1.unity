@@ -1483,7 +1483,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &66117217
 RectTransform:
@@ -10091,6 +10091,9 @@ MonoBehaviour:
   timerText: {fileID: 1817243076}
   finalScoreText: {fileID: 631613694}
   objectToDisable: {fileID: 621186988}
+  targetObject: {fileID: 0}
+  explosionObject: {fileID: 0}
+  isSend: 1
 --- !u!136 &579117463
 CapsuleCollider:
   m_ObjectHideFlags: 0
