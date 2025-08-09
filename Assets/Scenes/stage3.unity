@@ -47176,7 +47176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ad0461b4763c04e8c6452b6442b5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 300
+  timeLimit: 600
   manageZone: {fileID: 1225211612}
   storyEndUI: {fileID: 1149651982}
   freeEndUI: {fileID: 415848819}
