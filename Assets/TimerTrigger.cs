@@ -54,6 +54,8 @@ public class TimerTrigger : MonoBehaviour
             //         TimeUp(); // จบเกมทันที
             //     }
             // }
+
+            //Debug.Log(timer);
       
             if (timer <= 200 && isSend == true)
             {
@@ -198,7 +200,7 @@ public class TimerTrigger : MonoBehaviour
                 nextScene = "Stage3";
                 break;
             case "Stage3":
-                nextScene = "EndScene"; // หรือกลับเมนู
+                nextScene = "Menu"; // หรือกลับเมนู
                 break;
             default:
                 Debug.LogWarning("ไม่พบด่านถัดไปจาก: " + currentScene);
